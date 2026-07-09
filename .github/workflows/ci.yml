@@ -34,3 +34,39 @@ jobs:
                    docs/MAPEAMENTO-ESTRATEGIA.md docs/FASES-0-8.md ARCHITECTURE.md; do
             test -f "$f" || (echo "Missing $f" && exit 1)
           done
+
+      - name: Secret scan (no sensitive data in public repo)
+        run: |
+          python - <<'PY'
+          import re, sys
+          from pathlib import Path
+          root = Path(".")
+          skip = {".git", ".venv", "venv", "__pycache__"}
+          patterns = [
+              r"gho_[A-Za-z0-9]{20,}",
+              r"ghp_[A-Za-z0-9]{20,}",
+              r"sk-[A-Za-z0-9]{20,}",
+              r"OPENAI_API_KEY\s*=\s*\S+",
+              r"TELEGRAM_BOT_TOKEN\s*=\s*\d+:",
+          ]
+          hits = []
+          for path in root.rglob("*"):
+              if not path.is_file():
+                  continue
+              if any(part in skip for part in path.parts):
+                  continue
+              if path.name.startswith(".env") and path.name not in {".env.example", ".env.example.template"}:
+                  hits.append(f"SENSITIVE FILE: {path}")
+                  continue
+              try:
+                  text = path.read_text(encoding="utf-8", errors="ignore")
+              except OSError:
+                  continue
+              for pat in patterns:
+                  if re.search(pat, text):
+                      hits.append(f"PATTERN {pat} in {path}")
+          if hits:
+              print("\n".join(hits))
+              sys.exit(1)
+          print("OK: no secrets detected")
+          PY
