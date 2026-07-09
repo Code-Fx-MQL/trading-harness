@@ -30,8 +30,8 @@ O CRT também mantém uma cópia local do blueprint em `docs/harness-blueprint/`
 |-------|-------|
 | Repositório | [Code-Fx-MQL/orb-agent](https://github.com/Code-Fx-MQL/orb-agent) |
 | Estratégia | ORB — top-down 1D → 1H → 15m |
-| Maturidade | Fase 1 (`detect_orb_setup` real) |
-| Destaques | Top-down 1D→1H→15m, breakout+reteste, 14 testes |
+| Maturidade | Fase 2 (CCXT + detector ORB) |
+| Destaques | stub/ccxt/auto, Kraken+Gate, 22+ testes unitarios |
 
 Gerar um clone local com o scaffold:
 
