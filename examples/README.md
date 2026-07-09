@@ -30,8 +30,8 @@ O CRT também mantém uma cópia local do blueprint em `docs/harness-blueprint/`
 |-------|-------|
 | Repositório | [Code-Fx-MQL/orb-agent](https://github.com/Code-Fx-MQL/orb-agent) |
 | Estratégia | ORB — top-down 1D → 1H → 15m |
-| Maturidade | Fase 7 (live gate + broker + checklist go-live) |
-| Destaques | pipeline + backtest + `orb-ui` + live gate duplo + broker stub/ccxt, 55+ testes |
+| Maturidade | **Fases 0–8 completas** (paridade blueprint) |
+| Destaques | ORB completo: Docker, Telegram, scan agendado, EasyPanel deploy, 65+ testes |
 
 Gerar um clone local com o scaffold:
 
