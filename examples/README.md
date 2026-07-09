@@ -24,15 +24,20 @@ Repositórios que aplicam o [Trading Harness](../README.md) em estratégias conc
 
 O CRT também mantém uma cópia local do blueprint em `docs/harness-blueprint/` (sincronizada com este repo).
 
-## Exemplo gerado por scaffold (ORB)
+## Exemplo: Agente ORB (Opening Range Breakout)
 
-O comando abaixo cria um repositório local completo (não incluído neste repo público):
+| Campo | Valor |
+|-------|-------|
+| Repositório | [Code-Fx-MQL/orb-agent](https://github.com/Code-Fx-MQL/orb-agent) |
+| Estratégia | ORB — top-down 1D → 1H → 15m |
+| Maturidade | Fase 0 (scaffold funcional) |
+| Destaques | Pipeline stub, 8 tools, testes smoke, docs ORB |
+
+Gerar um clone local com o scaffold:
 
 ```powershell
 .\scripts\scaffold-strategy.ps1 -StrategyName orb -DisplayName "Opening Range Breakout"
 ```
-
-Resultado típico: `orb-agent/` com pipeline stub, 8 tools, testes smoke e docs ORB em `docs/design-docs/orb-strategy.md`.
 
 ## Adicionar o seu exemplo
 
