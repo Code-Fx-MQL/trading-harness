@@ -1,0 +1,29 @@
+# Agente {{DISPLAY_NAME}}
+
+Agente de IA para **{{DISPLAY_NAME}}** construído com [Trading Harness](https://github.com/Code-Fx-MQL/trading-harness).
+
+> **Humans steer. Agents execute.**
+
+⚠️ Uso educacional e pesquisa. Trading envolve risco de perda de capital.
+
+## Início rápido
+
+```powershell
+.\scripts\setup.ps1
+Copy-Item .env.example .env
+{{CLI_NAME}} --pair XAUUSD
+pytest
+.\scripts\validate.ps1
+```
+
+## Documentação
+
+| Doc | Conteúdo |
+|-----|----------|
+| [Regras {{DISPLAY_NAME}}](docs/design-docs/{{STRATEGY}}-strategy.md) | Definição da estratégia |
+| [Plano ativo](docs/exec-plans/active/fase-0-fundacao.md) | Roadmap atual |
+| [AGENTS.md](AGENTS.md) | Mapa para agentes IA |
+
+## Status
+
+Fase 0 — Fundação (scaffold). Ver [FASES 0–8](https://github.com/Code-Fx-MQL/trading-harness/blob/main/docs/FASES-0-8.md).

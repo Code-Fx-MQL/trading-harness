@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Doc garden
+        run: python scripts/doc_garden.py
+
+      - name: Check AGENTS.md line count
+        run: |
+          lines=$(wc -l < AGENTS.md)
+          if [ "$lines" -gt 150 ]; then
+            echo "AGENTS.md has $lines lines (max 150)"
+            exit 1
+          fi
+
+      - name: Verify required docs exist
+        run: |
+          for f in docs/GUIA-REPLICACAO-HARNESS.md docs/ESTRUTURA-REPOSITORIO.md \
+                   docs/MAPEAMENTO-ESTRATEGIA.md docs/FASES-0-8.md ARCHITECTURE.md; do
+            test -f "$f" || (echo "Missing $f" && exit 1)
+          done

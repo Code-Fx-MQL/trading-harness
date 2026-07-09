@@ -1,0 +1,45 @@
+# AGENTS.md — Mapa do Repositório
+
+> Índice para agentes. Detalhes em `docs/`.
+
+## Missão
+
+**Agente {{DISPLAY_NAME}}** — IA especializada em {{DISPLAY_NAME}} com Harness Engineering.
+
+Blueprint: [trading-harness](https://github.com/Code-Fx-MQL/trading-harness)
+
+## Onde começar
+
+| Tarefa | Arquivo |
+|--------|---------|
+| Plano ativo | `docs/exec-plans/active/fase-0-fundacao.md` |
+| Regras da estratégia | `docs/design-docs/{{STRATEGY}}-strategy.md` |
+| Spec do agente | `docs/product-specs/agente-{{STRATEGY}}.md` |
+| Arquitetura | `ARCHITECTURE.md` |
+
+## Código
+
+```
+src/{{AGENT_PKG}}/
+├── pipeline/analyze.py    # Orquestração determinística
+├── tools/{{STRATEGY}}.py  # detect_{{STRATEGY}}_setup
+├── config/{{STRATEGY}}_rules.py
+├── guardrails/            # Risco, live gate
+└── main.py                # CLI
+```
+
+## Comandos
+
+```powershell
+.\scripts\setup.ps1
+.\scripts\validate.ps1
+{{CLI_NAME}} --pair XAUUSD
+pytest
+```
+
+## Regras inegociáveis
+
+- Modo default `analysis`
+- Live bloqueado sem gate duplo
+- Pipeline determinístico (sem LLM obrigatório)
+- Top-down: HTF → MTF → LTF (configurável em settings)
