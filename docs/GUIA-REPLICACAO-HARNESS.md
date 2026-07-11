@@ -29,6 +29,7 @@ Documentos complementares nesta pasta:
 - [ESTRUTURA-REPOSITORIO.md](./ESTRUTURA-REPOSITORIO.md)
 - [MAPEAMENTO-ESTRATEGIA.md](./MAPEAMENTO-ESTRATEGIA.md)
 - [FASES-0-8.md](./FASES-0-8.md)
+- [INTEGRACAO-MT5-DATA-PROVIDER.md](./INTEGRACAO-MT5-DATA-PROVIDER.md) — dados live MT5 (Windows + nuvem)
 
 ---
 
@@ -95,7 +96,7 @@ Todo o resto (`guardrails/`, `paper/`, `audit/`, `ops/`, `ui/production.py`, `al
                                 │
 ┌───────────────────────────────▼─────────────────────────────────────┐
 │ CAMADA 5 — INFRAESTRUTURA                                           │
-│ CCXT · JSON stores · webhooks · Streamlit · Docker · LangSmith      │
+│ CCXT · MT5 Provider · JSON stores · webhooks · Streamlit · Docker   │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -107,7 +108,7 @@ CLI/UI/Scan agendado
        ▼
 run_pair_analysis(pair)
        │
-       ├─► fetch_multi_tf_data ──► providers/ccxt
+       ├─► fetch_multi_tf_data ──► providers/mt5 · providers/ccxt
        ├─► detect_{strategy}_setup ──► {strategy}_rules
        ├─► analyze_confluences ──► analysis/
        ├─► calculate_trade_params ──► models/schemas
@@ -180,8 +181,10 @@ git init
 
 1. Implementar `providers/ccxt_provider.py`
 2. Mapear pares em `providers/symbols.py`
-3. Tool `fetch_multi_tf_data` com modos stub/ccxt/auto
+3. Tool `fetch_multi_tf_data` com modos stub/ccxt/auto (e opcionalmente `mt5`)
 4. Testes integration marcados `@pytest.mark.integration`
+
+**Produção live com MT5 (opcional):** serviço externo [mt5-data-provider](https://github.com/Code-Fx-MQL/mt5-data-provider) no Windows + túnel HTTPS. Ver [INTEGRACAO-MT5-DATA-PROVIDER.md](./INTEGRACAO-MT5-DATA-PROVIDER.md). O CRT usa `CRT_DATA_SOURCE=mt5` e `MT5_PROVIDER_URL` na nuvem.
 
 ```python
 # tools/data.py — padrão
@@ -854,7 +857,9 @@ Script sugerido: buscar/substituir com revisão manual em `docs/` e `tests/`.
 | Confluências | `src/crt_agent/analysis/confluences.py` |
 | Go-live | `src/crt_agent/ops/golive.py` |
 | UI | `src/crt_agent/ui/app.py` |
+| MT5 provider client | `src/crt_agent/providers/mt5_provider.py` |
 | Validate | `scripts/validate.ps1` |
+| MT5 integração (doc) | [INTEGRACAO-MT5-DATA-PROVIDER.md](./INTEGRACAO-MT5-DATA-PROVIDER.md) |
 
 ## Apêndice C — Maturidade harness (L0–L5)
 

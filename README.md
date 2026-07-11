@@ -31,6 +31,7 @@ Este repositório **não é um bot de trading**. É o blueprint, templates e fer
 | Doc | Conteúdo |
 |-----|----------|
 | **[Guia completo](docs/GUIA-REPLICACAO-HARNESS.md)** | Passo a passo do zero à produção |
+| **[Integração MT5](docs/INTEGRACAO-MT5-DATA-PROVIDER.md)** | Dados live MT5 + harness na nuvem |
 | [Estrutura do repositório](docs/ESTRUTURA-REPOSITORIO.md) | Árvore de ficheiros e convenções |
 | [Mapeamento de estratégia](docs/MAPEAMENTO-ESTRATEGIA.md) | Traduzir regras → módulos |
 | [Fases 0–8](docs/FASES-0-8.md) | Roadmap com entregáveis |

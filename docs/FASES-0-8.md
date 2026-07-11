@@ -55,6 +55,7 @@ pytest -q
 | 2.5 | `config/pairs_registry.py` |
 | 2.6 | `tests/test_ccxt_data.py` (integration marker) |
 | 2.7 | CI com `CRT_DATA_SOURCE=stub` |
+| 2.8 | (Opcional) `providers/mt5_provider.py` + doc [INTEGRACAO-MT5-DATA-PROVIDER.md](./INTEGRACAO-MT5-DATA-PROVIDER.md) |
 
 ---
 

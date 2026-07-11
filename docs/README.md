@@ -10,6 +10,7 @@ Este conjunto de documentos descreve como construir um **sistema Harness Enginee
 | Documento | Conteúdo |
 |-----------|----------|
 | **[GUIA-REPLICACAO-HARNESS.md](./GUIA-REPLICACAO-HARNESS.md)** | **Guia principal** — passo a passo, camadas, pipeline, checklist |
+| **[INTEGRACAO-MT5-DATA-PROVIDER.md](./INTEGRACAO-MT5-DATA-PROVIDER.md)** | **Dados live MT5** — Windows + Cloudflare + harness na nuvem |
 | [ESTRUTURA-REPOSITORIO.md](./ESTRUTURA-REPOSITORIO.md) | Árvore de ficheiros, convenções, módulos obrigatórios |
 | [MAPEAMENTO-ESTRATEGIA.md](./MAPEAMENTO-ESTRATEGIA.md) | Traduzir regras de uma estratégia para o harness |
 | [FASES-0-8.md](./FASES-0-8.md) | Entregáveis por fase (roadmap) |
@@ -47,5 +48,7 @@ O harness (risco, audit, paper, deploy, CI, docs) é **reutilizável sem altera�
 | Live gate | `guardrails/live_gate.py` |
 | Go-live checklist | `ops/golive.py` |
 | Dashboard | `ui/app.py` |
+| Dados live MT5 | `providers/mt5_provider.py` + [INTEGRACAO-MT5-DATA-PROVIDER.md](./INTEGRACAO-MT5-DATA-PROVIDER.md) |
 
-Repo: [github.com/Code-Fx-MQL/crt-agent](https://github.com/Code-Fx-MQL/crt-agent)
+Repo: [github.com/Code-Fx-MQL/crt-agent](https://github.com/Code-Fx-MQL/crt-agent)  
+Provider: [github.com/Code-Fx-MQL/mt5-data-provider](https://github.com/Code-Fx-MQL/mt5-data-provider)

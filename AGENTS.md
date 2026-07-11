@@ -15,6 +15,7 @@
 | Estrutura de repo | `docs/ESTRUTURA-REPOSITORIO.md` |
 | Mapear estratégia | `docs/MAPEAMENTO-ESTRATEGIA.md` |
 | Roadmap fases | `docs/FASES-0-8.md` |
+| Integração MT5 live | `docs/INTEGRACAO-MT5-DATA-PROVIDER.md` |
 | Arquitetura | `ARCHITECTURE.md` |
 | Contribuir | `CONTRIBUTING.md` |
 | Implementação CRT | `examples/README.md` |

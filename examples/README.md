@@ -21,8 +21,29 @@ Repositórios que aplicam o [Trading Harness](../README.md) em estratégias conc
 | `{strategy}_rules` | `src/crt_agent/config/crt_rules.py` |
 | `pipeline/analyze.py` | `src/crt_agent/pipeline/analyze.py` |
 | `ops/golive.py` | `src/crt_agent/ops/golive.py` |
+| Dados live MT5 | `src/crt_agent/providers/mt5_provider.py` |
 
 O CRT também mantém uma cópia local do blueprint em `docs/harness-blueprint/` (sincronizada com este repo).
+
+### Dados live — MT5 Data Provider (produção)
+
+O CRT em produção usa candles **live** do MetaTrader 5 via serviço independente:
+
+| Componente | URL / repo |
+|------------|------------|
+| Provider (Windows) | [mt5-data-provider](https://github.com/Code-Fx-MQL/mt5-data-provider) em `C:\MT5\mt5-data-provider` |
+| API pública | `https://mt5.fullscopetrade.com` |
+| Harness na nuvem | `https://crt.fullscopetrade.com` (EasyPanel) |
+
+Env essencial no harness:
+
+```env
+CRT_DATA_SOURCE=mt5
+MT5_PROVIDER_URL=https://mt5.fullscopetrade.com
+MT5_PROVIDER_API_KEY=<secret harness-crt>
+```
+
+Documentação completa: [docs/INTEGRACAO-MT5-DATA-PROVIDER.md](../docs/INTEGRACAO-MT5-DATA-PROVIDER.md).
 
 ## Exemplo: Agente ORB (Opening Range Breakout)
 
